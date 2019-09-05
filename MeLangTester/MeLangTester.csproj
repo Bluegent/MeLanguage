@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MeLang\MeLang.csproj">
-      <Project>{75888fd4-d5ac-4c14-a2f8-7c8909a5c856}</Project>
-      <Name>MeLang</Name>
+    <ProjectReference Include="..\MeLanguage\MeLanguage.csproj">
+      <Project>{ccb4f3dc-f04c-488b-b4c8-8ddb5fac55a4}</Project>
+      <Name>MeLanguage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
