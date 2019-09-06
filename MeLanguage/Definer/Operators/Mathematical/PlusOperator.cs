@@ -5,20 +5,25 @@ namespace MeLanguage.Definer.Operators.Mathematical
 
     public class PlusOperator : IOperatorDefiner
     {
-        
-        public void AddOperator(LanguageDefiner definer)
+        public Operator Plus;
+
+        public PlusOperator()
         {
-            Operator plus = Utils.MakeOperator(
+            Plus = Utils.MakeOperator(
                 LConstants.PLUS_OP,
                 1,
                 true,
                 (values, op) =>
-                    {
-                        op.CheckParamCount(values.Length);
-                        MeNumber result = values[0].Get<float>() + values[1].Get<float>();
-                        return result;
-                    }, CommonValidators.TwoNumbers, CommonParamTypes.TwoNumbers);
-            definer.AddOperator(plus);
+                {
+                    op.CheckParamCount(values.Length);
+                    MeNumber result = values[0].Get<float>() + values[1].Get<float>();
+                    return result;
+                }, CommonValidators.TwoNumbers, CommonParamTypes.TwoNumbers);
+        }
+        
+        public void AddOperator(LanguageDefiner definer)
+        {
+            definer.AddOperator(Plus);
         }
     }
 }

@@ -144,9 +144,49 @@ namespace Language.Definer.Operators.Mathetmatical
         }
 
         [TestMethod]
-        public void LesserrOperatorThrows()
+        public void LesserOperatorThrows()
         {
             Operator op = new LesserOperator().Lesser;
+            MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
+
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+        }
+
+        [TestMethod]
+        public void PlusOperatorCanAdd()
+        {
+            Operator op = new PlusOperator().Plus;
+           
+            MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            const float expected = 30.0f;
+            float result = op.Execute(arr).Get<float>();
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void PlusOperatorThrows()
+        {
+            Operator op = new PlusOperator().Plus;
+            MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
+
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+        }
+
+        [TestMethod]
+        public void MinusOperatorCanSubtract()
+        {
+            Operator op = new MinusOperator().Minus;
+
+            MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            const float expected = -10.0f;
+            float result = op.Execute(arr).Get<float>();
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void MinusOperatorThrows()
+        {
+            Operator op = new MinusOperator().Minus;
             MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
 
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
