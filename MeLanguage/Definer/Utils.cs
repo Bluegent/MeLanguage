@@ -7,12 +7,12 @@ namespace MeLanguage.Definer
 
     public  interface IOperatorDefiner
     {
-        Operator DefineOperator();
+        void AddOperator(LanguageDefiner definer);
     }
 
     public interface IFunctionDefiner
     {
-        Function DefineFunction();
+        void AddFunction(LanguageDefiner definer);
     }
 
     public static class CommonValidators

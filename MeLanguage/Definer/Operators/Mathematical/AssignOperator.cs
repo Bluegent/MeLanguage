@@ -6,12 +6,13 @@ namespace MeLanguage.Definer.Operators.Mathematical
 
     public class AssignOperator : IOperatorDefiner
     {
-        public Operator DefineOperator()
+        public void AddOperator(LanguageDefiner definer)
         {
-            return Utils.MakeOperator(LConstants.ASSIGN_OP, -1, true, (values, op) =>
-                    {
-                        throw new NotImplementedException();
-                    }, new Validator((variables, operation) => true), null);
+            Operator assign = Utils.MakeOperator(LConstants.ASSIGN_OP, -1, true, (values, op) =>
+                {
+                    throw new NotImplementedException();
+                }, new Validator((variables, operation) => true), null);
+            definer.AddOperator(assign);
         }
     }
 }

@@ -4,16 +4,18 @@ namespace MeLanguage.Definer.Operators.Mathematical
     using System.Runtime.Remoting.Messaging;
 
     public class DivideOperator : IOperatorDefiner
-    {
-        public Operator DefineOperator()
+    { 
+
+        public void AddOperator(LanguageDefiner definer)
         {
-            return Utils.MakeOperator(LConstants.DIVIDE_OP, 2, true,
+            Operator divide = Utils.MakeOperator(LConstants.DIVIDE_OP, 2, true,
                 (values, op) =>
-                {
-                    op.CheckParamCount(values.Length);
-                   MeNumber result = values[0].Get<float>() / values[1].Get<float>();
-                   return result;
-                }, CommonValidators.TwoNumbers, CommonParamTypes.TwoNumbers);
+                    {
+                        op.CheckParamCount(values.Length);
+                        MeNumber result = values[0].Get<float>() / values[1].Get<float>();
+                        return result;
+                    }, CommonValidators.TwoNumbers, CommonParamTypes.TwoNumbers);
+            definer.AddOperator(divide);
         }
     }
 }

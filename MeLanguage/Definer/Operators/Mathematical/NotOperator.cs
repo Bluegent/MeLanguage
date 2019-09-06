@@ -4,13 +4,14 @@
 
     public class NotOperator : IOperatorDefiner
     {
-        public Operator DefineOperator()
+
+        public void AddOperator(LanguageDefiner definer)
         {
-            return Utils.MakeOperator(LConstants.NOT_OP, 2, true,
+            Operator not = Utils.MakeOperator(LConstants.NOT_OP, 2, true,
                 (values, op) =>
                     {
                         op.CheckParamCount(values.Length);
-                        MeBoolean result =  !values[0].Get<bool>();
+                        MeBoolean result = !values[0].Get<bool>();
                         return result;
                     }, new Validator((variables, operation) =>
                     {
@@ -18,6 +19,7 @@
                         return true;
                     })
                 , CommonParamTypes.Boolean);
+            definer.AddOperator(not);
         }
     }
 }

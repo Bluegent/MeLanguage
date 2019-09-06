@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definer\DefinerTest.cs" />
     <Compile Include="TestUtils.cs" />
     <Compile Include="Types\Var\MeNumberTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
