@@ -1,16 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Language.Definer.Operators.Mathetmatical
+using MeLangTester;
+using MeLanguage.Definer.Operators.Mathematical;
+using MeLanguage.Types.Exceptions;
+using MeLanguage.Types.Var;
+
+namespace MeLanguage.Definer.Operators.Mathetmatical
 {
-    using MeLangTester;
-
-    using MeLanguage.Definer;
-    using MeLanguage.Definer.Operators.Mathematical;
-    using MeLanguage.Types.Exceptions;
-    using MeLanguage.Types.Var;
-    using MeLanguage.Utility;
-
     [TestClass]
     public class MathOperatorsTest
     {
@@ -19,8 +15,12 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator divide = new DivideOperator().Divide;
             float expected = 10.0f;
-            float result = divide.Execute(new MeVariable[] { new MeNumber(100), new MeNumber(10), }).Get<float>();
-            Assert.AreEqual(expected,result);
+
+            MeVariable[] arr = { new MeNumber(100), new MeNumber(10) };
+            Assert.IsTrue(divide.CanExecute(arr));
+            float result = divide.Execute(arr).Get<float>();
+
+            Assert.AreEqual(expected, result);
 
         }
 
@@ -28,8 +28,9 @@ namespace Language.Definer.Operators.Mathetmatical
         public void DivideOperatorThrowsException()
         {
             Operator divide = new DivideOperator().Divide;
-            MeVariable[] arr =  { new MeString("TEST"), new MeNumber(10) };
-            TestUtils.CustomExceptionTest( () => divide.Execute(arr),typeof(MeContextException));
+            MeVariable[] arr = { new MeString("TEST"), new MeNumber(10) };
+            Assert.IsFalse(divide.CanExecute(arr));
+            TestUtils.CustomExceptionTest(() => divide.Execute(arr), typeof(MeContextException));
 
         }
 
@@ -38,8 +39,11 @@ namespace Language.Definer.Operators.Mathetmatical
         public void MultiplyOperatorCanMultiply()
         {
             Operator op = new MultiplyOperator().Multiply;
-            float expected = 100.0f;
-            float result = op.Execute(new MeVariable[] { new MeNumber(10), new MeNumber(10), }).Get<float>();  
+            float expected = 1000.0f;
+
+            MeVariable[] arr = { new MeNumber(100), new MeNumber(10) };
+            Assert.IsTrue(op.CanExecute(arr));
+            float result = op.Execute(arr).Get<float>();
             Assert.AreEqual(expected, result);
 
         }
@@ -49,6 +53,7 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new MultiplyOperator().Multiply;
             MeVariable[] arr = { new MeString("TEST"), new MeNumber(10) };
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
 
         }
@@ -59,8 +64,10 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new EqualsOperator().NumberEquals;
             float testNumber = 1337.0f;
-            bool result = op.Execute(new MeVariable[] { new MeNumber(testNumber), new MeNumber(testNumber), }).Get<bool>();
-            Assert.IsTrue( result);
+            MeVariable[] arr = { new MeNumber(testNumber), new MeNumber(testNumber) };
+            Assert.IsTrue(op.CanExecute(arr));
+            bool result = op.Execute(arr).Get<bool>();
+            Assert.IsTrue(result);
 
         }
 
@@ -69,7 +76,8 @@ namespace Language.Definer.Operators.Mathetmatical
         public void NumberEqualsCanThrow()
         {
             Operator op = new EqualsOperator().NumberEquals;
-            MeVariable[] arr = { new MeStruct(""), new MeNumber(10)};
+            MeVariable[] arr = { new MeStruct(""), new MeNumber(10) };
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
 
         }
@@ -79,7 +87,8 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new EqualsOperator().NumberEquals;
             string testString = "TEST";
-            MeVariable[] arr = { new MeStruct(testString), new MeString(testString),  };
+            MeVariable[] arr = { new MeStruct(testString), new MeString(testString) };
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
 
@@ -89,18 +98,20 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new EqualsOperator().StringEquals;
             string testString = "TEST_STR";
-            bool result = op.Execute(new MeVariable[] { new MeString(testString), new MeString(testString)}).Get<bool>();
+            MeVariable[] arr = {new MeString(testString), new MeString(testString)};
+            Assert.IsTrue(op.CanExecute(arr));
+            bool result = op.Execute(arr).Get<bool>();
             Assert.IsTrue(result);
-
         }
-
 
 
         [TestMethod]
         public void NotOperatorCanReverse()
         {
             Operator op = new NotOperator().Not;
-            bool result = op.Execute(new MeVariable[] { new MeBoolean(true) }).Get<bool>();
+            MeVariable[] arr = { new MeBoolean(true) };
+            Assert.IsTrue(op.CanExecute(arr));
+            bool result = op.Execute(arr).Get<bool>();
             Assert.AreEqual(false, result);
         }
 
@@ -108,9 +119,9 @@ namespace Language.Definer.Operators.Mathetmatical
         public void NotOperatorThrows()
         {
             Operator op = new NotOperator().Not;
-            MeVariable[] arr = {new MeString("test")};
-
-            TestUtils.CustomExceptionTest( ()=> op.Execute(arr), typeof(MeContextException));
+            MeVariable[] arr = { new MeString("test") };
+            Assert.IsFalse(op.CanExecute(arr));
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
 
 
@@ -119,6 +130,7 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new GreaterOperator().Greater;
             MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            Assert.IsTrue(op.CanExecute(arr));
             bool result = op.Execute(arr).Get<bool>();
             Assert.AreEqual(false, result);
         }
@@ -127,8 +139,8 @@ namespace Language.Definer.Operators.Mathetmatical
         public void GreaterOperatorThrows()
         {
             Operator op = new GreaterOperator().Greater;
-            MeVariable[] arr = { new MeString("test") , new MeNumber(10)};
-
+            MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
 
@@ -139,6 +151,7 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new LesserOperator().Lesser;
             MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            Assert.IsTrue(op.CanExecute(arr));
             bool result = op.Execute(arr).Get<bool>();
             Assert.AreEqual(true, result);
         }
@@ -148,7 +161,7 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new LesserOperator().Lesser;
             MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
-
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
 
@@ -156,8 +169,8 @@ namespace Language.Definer.Operators.Mathetmatical
         public void PlusOperatorCanAdd()
         {
             Operator op = new PlusOperator().Plus;
-           
             MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            Assert.IsTrue(op.CanExecute(arr));
             const float expected = 30.0f;
             float result = op.Execute(arr).Get<float>();
             Assert.AreEqual(expected, result);
@@ -168,16 +181,16 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new PlusOperator().Plus;
             MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
-
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
 
         [TestMethod]
         public void MinusOperatorCanSubtract()
         {
-            Operator op = new MinusOperator().Minus;
-
+            Operator op = new MinusOperator().Minus; 
             MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            Assert.IsTrue(op.CanExecute(arr));
             const float expected = -10.0f;
             float result = op.Execute(arr).Get<float>();
             Assert.AreEqual(expected, result);
@@ -188,7 +201,7 @@ namespace Language.Definer.Operators.Mathetmatical
         {
             Operator op = new MinusOperator().Minus;
             MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
-
+            Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
     }
