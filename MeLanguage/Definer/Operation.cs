@@ -1,16 +1,10 @@
-﻿using System;
-
-using MeLanguage.Types.Exceptions;
-using MeLanguage.Types.Var;
-using MeLanguage.Definer;
-
-namespace MeLanguage.Definer
+﻿namespace MeLanguage.Definer
 {
-    using System.Security.Policy;
+    using System;
     using System.Text;
 
-    using MeLanguage.Types.Exceptions;
-    using MeLanguage.Types.Var;
+    using Types.Exceptions;
+    using Types.Var;
     using MeLanguage.Utility;
 
     public abstract class Operation

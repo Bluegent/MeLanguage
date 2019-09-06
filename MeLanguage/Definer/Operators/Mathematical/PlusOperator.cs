@@ -1,4 +1,6 @@
 ﻿
+using MeLanguage.Definer.Utility;
+
 namespace MeLanguage.Definer.Operators.Mathematical
 {
     using MeLanguage.Types.Var;

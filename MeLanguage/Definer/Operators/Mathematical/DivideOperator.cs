@@ -1,4 +1,5 @@
-﻿using MeLanguage.Types.Var;
+﻿using MeLanguage.Definer.Utility;
+using MeLanguage.Types.Var;
 namespace MeLanguage.Definer.Operators.Mathematical
 {
     using System.Runtime.Remoting.Messaging;

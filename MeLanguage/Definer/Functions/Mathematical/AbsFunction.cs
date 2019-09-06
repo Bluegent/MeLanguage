@@ -17,7 +17,7 @@
                     float[] parameters = MeArray.ToFloatArray(values);
                     MeNumber maxNumber = parameters.Max();
                     return maxNumber;
-                }, CommonParamTypes.SingleNumber, false);
+                }, CommonParamTypes.SingleNumber,CommonValidators.SingleNumber, false);
         }
 
         public void AddFunction(LanguageDefiner definer)

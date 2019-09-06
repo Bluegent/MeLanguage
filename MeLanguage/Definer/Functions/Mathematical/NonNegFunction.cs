@@ -1,4 +1,6 @@
-﻿namespace MeLanguage.Definer.Functions.Mathematical
+﻿using MeLanguage.Definer.Utility;
+
+namespace MeLanguage.Definer.Functions.Mathematical
 {
     using MeLanguage.Types.Var;
 
@@ -14,7 +16,7 @@
                             float value = values[0].Get<float>();
                             MeNumber result = value > 0 ? value : 0;
                             return result;
-                        }, CommonParamTypes.SingleNumber);
+                        }, CommonParamTypes.SingleNumber,CommonValidators.SingleNumber);
             definer.AddFunction(nonNeg);
         }
     }

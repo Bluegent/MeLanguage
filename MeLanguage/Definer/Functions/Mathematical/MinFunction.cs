@@ -1,4 +1,6 @@
-﻿namespace MeLanguage.Definer.Functions.Mathematical
+﻿using MeLanguage.Definer.Utility;
+
+namespace MeLanguage.Definer.Functions.Mathematical
 {
     using System.Linq;
 
@@ -17,7 +19,7 @@
                     float[] parameters = MeArray.ToFloatArray(values);
                     MeNumber maxNumber = parameters.Max();
                     return maxNumber;
-                }, CommonParamTypes.SingleNumber, false);
+                }, CommonParamTypes.SingleNumber, CommonValidators.NumberArray, false);
         }
 
         public void AddFunction(LanguageDefiner definer)
