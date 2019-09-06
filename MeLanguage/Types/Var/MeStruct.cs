@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Language.Types.Exceptions;
-namespace Language.Types.Var
+using MeLanguage.Types.Exceptions;
+namespace MeLanguage.Types.Var
 {
     using System.Text;
+
+    using MeLanguage.Types.Exceptions;
 
     public class MeStruct : MeVariable
     {
@@ -42,7 +44,7 @@ namespace Language.Types.Var
             if (tType == typeof(MeStruct))
                 return (T)Convert.ChangeType(this,typeof(T));
 
-            throw Except(typeof(T));
+            throw CastExcept(typeof(T));
         }
 
         public override string ToString()

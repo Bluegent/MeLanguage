@@ -1,7 +1,10 @@
 ﻿
 using System;
-namespace Language.Types.Var
+using MeLanguage.Types.Exceptions;
+namespace MeLanguage.Types.Var
 {
+
+
     public abstract class MeVariable
     {
         protected object _value;
@@ -12,9 +15,9 @@ namespace Language.Types.Var
             Type = obj.GetType();
         }
 
-        public MeInvalidCastException Except(Type t)
+        protected MeInvalidCastException CastExcept(Type t)
         {
-            return new MeInvalidCastException(this,t);
+            return new MeInvalidCastException(this, t);
         }
         public abstract T Get<T>();
 

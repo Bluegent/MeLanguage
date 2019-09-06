@@ -42,12 +42,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definer\LConstants.cs" />
+    <Compile Include="Definer\Utils.cs" />
+    <Compile Include="Definer\Function.cs" />
+    <Compile Include="Definer\LanguageDefiner.cs" />
+    <Compile Include="Definer\Operation.cs" />
+    <Compile Include="Definer\Operator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\AssignOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\DivideOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\GreaterOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\LesserOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\MinusOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\MultiplyOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\NotOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\NumEqualsOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\PlusOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\PowerOperator.cs" />
+    <Compile Include="Definer\Validator.cs" />
+    <Compile Include="Parser\Tokenize\MeBasicToken.cs" />
+    <Compile Include="Parser\Tokenize\Tokenizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Exceptions\MeException.cs" />
     <Compile Include="Types\Exceptions\MeInvalidCastException.cs" />
+    <Compile Include="Types\Var\MeBoolean.cs" />
     <Compile Include="Types\Var\MeNumber.cs" />
     <Compile Include="Types\Var\MeStruct.cs" />
     <Compile Include="Types\Var\MeVariable.cs" />
+    <Compile Include="Utility\MathUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Definer\Functions\Mathematical\" />
+    <Folder Include="Definer\Operators\Object\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

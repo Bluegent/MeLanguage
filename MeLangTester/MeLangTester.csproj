@@ -8,7 +8,7 @@
     <ProjectGuid>{D7EC950A-6A34-4B34-9F24-D07946387476}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MeLangTester</RootNamespace>
+    <RootNamespace>Language</RootNamespace>
     <AssemblyName>MeLangTester</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

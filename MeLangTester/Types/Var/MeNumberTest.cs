@@ -1,10 +1,9 @@
 ﻿
-using Language.Types.Var;
-
+using MeLanguage.Types.Var;
+using MeLanguage.Types.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MeLangTester.Types.Var
 {
-    using System;
 
     [TestClass]
     public class MeNumberTest

@@ -1,9 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using MeLanguage.Types.Exceptions;
+using MeLanguage.Types.Var;
 namespace MeLangTester.Types.Var
 {
-    using Language.Types.Var;
+
 
     [TestClass]
     public class MeStructTest

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Language.Types.Exceptions
+namespace MeLanguage.Types.Exceptions
 {
  
 

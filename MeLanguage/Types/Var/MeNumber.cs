@@ -1,8 +1,8 @@
 ﻿using System;
 
-using Language.Types.Var;
+using MeLanguage.Types.Var;
 
-namespace Language.Types.Var
+namespace MeLanguage.Types.Var
 {
     public class MeNumber : MeVariable
     {
@@ -12,8 +12,23 @@ namespace Language.Types.Var
             Type tType = typeof(T);
             if (tType == typeof(int) || tType == typeof(float) || tType == typeof(long))
                 return (T)Convert.ChangeType(_value, typeof(T));
-            throw Except(typeof(T));
+            throw CastExcept(typeof(T));
 
+        }
+
+        public static implicit operator MeNumber(float value)
+        {
+            return  new MeNumber(value);
+        }
+
+        public static implicit operator MeNumber(int value)
+        {
+            return new MeNumber(value);
+        }
+
+        public static implicit operator MeNumber(long value)
+        {
+            return new MeNumber(value);
         }
 
         public override string ToString()
