@@ -18,10 +18,8 @@ namespace Language.Definer.Operators.Mathetmatical
         public void DivideOperatorCanDivide()
         {
             Operator divide = new DivideOperator().Divide;
-
             float expected = 10.0f;
             float result = divide.Execute(new MeVariable[] { new MeNumber(100), new MeNumber(10), }).Get<float>();
-
             Assert.AreEqual(expected,result);
 
         }
@@ -40,10 +38,8 @@ namespace Language.Definer.Operators.Mathetmatical
         public void MultiplyOperatorCanMultiply()
         {
             Operator op = new MultiplyOperator().Multiply;
-
             float expected = 100.0f;
-            float result = op.Execute(new MeVariable[] { new MeNumber(10), new MeNumber(10), }).Get<float>();
-
+            float result = op.Execute(new MeVariable[] { new MeNumber(10), new MeNumber(10), }).Get<float>();  
             Assert.AreEqual(expected, result);
 
         }
@@ -52,7 +48,6 @@ namespace Language.Definer.Operators.Mathetmatical
         public void MultiplyOperatorThrowsException()
         {
             Operator op = new MultiplyOperator().Multiply;
-
             MeVariable[] arr = { new MeString("TEST"), new MeNumber(10) };
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
 
@@ -98,5 +93,25 @@ namespace Language.Definer.Operators.Mathetmatical
             Assert.IsTrue(result);
 
         }
+
+
+
+        [TestMethod]
+        public void NotOperatorCanReverse()
+        {
+            Operator op = new NotOperator().Not;
+            bool result = op.Execute(new MeVariable[] { new MeBoolean(true) }).Get<bool>();
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void NotOperatorThrows()
+        {
+            Operator op = new NotOperator().Not;
+            MeVariable[] arr = {new MeString("test")};
+
+            TestUtils.CustomExceptionTest( ()=> op.Execute(arr), typeof(MeContextException));
+        }
+
     }
 }

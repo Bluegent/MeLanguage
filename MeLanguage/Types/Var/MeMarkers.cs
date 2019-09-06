@@ -6,5 +6,6 @@
         public const string STRUCT_MARKER = "$OBJ:";
         public const string STRING_MARKER = "$STR:";
         public const string NUMBER_MARKER = "$NUM:";
+        public const string BOOL_MARKER = "$BOL:";
     }
 }

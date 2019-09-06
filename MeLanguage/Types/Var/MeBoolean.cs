@@ -27,7 +27,7 @@
         
         public override string ToString()
         {
-            return _value.ToString();
+            return $"{MeMarkers.BOOL_MARKER}{_value}";
         }
     }
 }

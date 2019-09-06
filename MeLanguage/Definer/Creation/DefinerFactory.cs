@@ -57,6 +57,8 @@ namespace MeLanguage.Definer.Creation
                 //math
                 new MaxFunction(),
                 new NonNegFunction(),
+                new MinFunction(), 
+                new Absfunction()
             };
 
             foreach (IFunctionDefiner func in functions)
