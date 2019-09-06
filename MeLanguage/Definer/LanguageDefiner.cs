@@ -172,5 +172,16 @@ namespace MeLanguage.Definer
 
             return op;
         }
+
+        public Operator GetOperator(string key)
+        {
+            Dictionary<int, Operator> subOperators = _operators.ContainsKey(key) ? _operators[key] : null;
+            if (subOperators == null)
+            {
+                return null;
+            }
+
+            return subOperators.Values.Count == 0? null : subOperators.Values.First();
+        }
     }
 }

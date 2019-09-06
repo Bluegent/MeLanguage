@@ -62,6 +62,8 @@
     <Compile Include="Definer\Operators\Mathematical\PlusOperator.cs" />
     <Compile Include="Definer\Operators\Mathematical\PowerOperator.cs" />
     <Compile Include="Definer\Validator.cs" />
+    <Compile Include="Parser\MeParser.cs" />
+    <Compile Include="Parser\Rearrange\Postfixer.cs" />
     <Compile Include="Parser\Tokenize\Token.cs" />
     <Compile Include="Parser\Tokenize\Tokenizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

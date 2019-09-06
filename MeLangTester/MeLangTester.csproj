@@ -8,7 +8,7 @@
     <ProjectGuid>{D7EC950A-6A34-4B34-9F24-D07946387476}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Language</RootNamespace>
+    <RootNamespace>MeLanguage</RootNamespace>
     <AssemblyName>MeLangTester</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,13 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definer\DefinerTest.cs" />
     <Compile Include="Definer\Operators\Mathetmatical\MathOperatorsTest.cs" />
+    <Compile Include="Parser\Tokenize\PostfixerTest.cs" />
     <Compile Include="Parser\Tokenize\TokenizerTest.cs" />
     <Compile Include="TestUtils.cs" />
     <Compile Include="Types\Var\MeNumberTest.cs" />
