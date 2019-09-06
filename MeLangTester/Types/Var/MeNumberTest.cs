@@ -2,6 +2,7 @@
 using MeLanguage.Types.Var;
 using MeLanguage.Types.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace MeLangTester.Types.Var
 {
 

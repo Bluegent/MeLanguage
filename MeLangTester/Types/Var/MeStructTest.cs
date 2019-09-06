@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using MeLanguage.Types.Exceptions;
+﻿using MeLanguage.Types.Exceptions;
 using MeLanguage.Types.Var;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace MeLangTester.Types.Var
 {
 

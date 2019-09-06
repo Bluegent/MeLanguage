@@ -49,7 +49,7 @@ namespace MeLanguage.Definer
         public const char RIGHT_PAREN = ')';
         public const char SPECIAL_CHAR = '$';
 
-        public static readonly char[] IgnoreChars = new char[4]{' ','\n','\t','\r'};
+        public static readonly char[] IgnoreChars = {' ','\n','\t','\r'};
 
         public static readonly string TargetKeyword = SPECIAL_CHAR + "T";
 

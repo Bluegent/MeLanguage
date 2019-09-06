@@ -1,8 +1,8 @@
-﻿namespace MeLangTester
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace MeLangTester
 {
     using System;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     public static class TestUtils
     {

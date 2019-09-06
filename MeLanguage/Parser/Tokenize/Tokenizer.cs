@@ -1,29 +1,63 @@
-﻿using System.Configuration;
-
+﻿
 namespace MeLanguage.Parser.Tokenize
 {
+    using Definer;
+
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class Tokenizer
+    public class Tokenizer
     {
-
-        public static MeBasicToken[] Tokenize(string expression)
+        private LanguageDefiner _definer;
+        public Tokenizer(LanguageDefiner definer)
         {
-            List<MeBasicToken> result = new List<MeBasicToken>();
+            _definer = definer;
+        }
+
+        public TokenType GetType(string str)
+        {
+            if (_definer.IsFunction(str))
+                return TokenType.Function;
+            if (_definer.IsOperator(str))
+                return TokenType.Operator;
+            if (_definer.IsLeftParen(str))
+                return TokenType.LeftParen;
+            if (_definer.IsRightParen(str))
+                return TokenType.RightParen;
+            if (_definer.IsSeparator(str))
+                return TokenType.Separator;
+            return TokenType.Variable;
+
+        }
+
+
+        public Token CreateToken(string tokenString)
+        {
+            return new Token(tokenString, GetType(tokenString));
+        }
+
+        public Token CreateToken(char c)
+        {
+            string charString = char.ToString(c);
+            return new Token(charString, GetType(charString));
+        }
+
+        public Token[] Tokenize(string expression)
+        {
+            List<Token> result = new List<Token>();
             string current = "";
             bool inString = false;
             int i = 0;
             while (i < expression.Length)
             {
-                /*
+
                 char c = expression[i];
                 if (c == '"')
                 {
                     if (inString)
                     {
-                        MeBasicToken stringToken = new MeBasicToken(current);
+                        Token stringToken = CreateToken(current);
                         result.Add(stringToken);
                         current = "";
                     }
@@ -34,11 +68,11 @@ namespace MeLanguage.Parser.Tokenize
                 {
                     current += c;
                 }
-                else if (Definer.Instance().Ignore(c))
+                else if (_definer.IsIgnored(c))
                 {
 
                 }
-                else if (!Definer.Instance().IsSpecialChar(c))
+                else if (!_definer.IsSpecialChar(c))
                 {
                     current += c;
                 }
@@ -46,7 +80,7 @@ namespace MeLanguage.Parser.Tokenize
                 {
                     if (current.Length != 0)
                     {
-                        Token testToken = new Token(current);
+                        Token testToken = CreateToken(current);
                         if (testToken.Type == TokenType.Variable)
                         {
                             result.Add(testToken);
@@ -68,7 +102,7 @@ namespace MeLanguage.Parser.Tokenize
                                     $"Found minus after function with no (, function:\"{prev.Value}\".");
                             case TokenType.Variable:
                             case TokenType.RightParen:
-                                result.Add(new Token(char.ToString(c)));
+                                result.Add(CreateToken(c));
                                 break;
                             default:
                                 current = "-";
@@ -82,30 +116,30 @@ namespace MeLanguage.Parser.Tokenize
                 {
                     if (current.Length != 0)
                     {
-                        result.Add(new Token(current));
+                        result.Add(CreateToken(c));
                         current = "";
                     }
-                    if (i < expression.Length - 1 && Definer.Instance().IsOperatorChar(c) && Definer.Instance().IsOperatorChar(expression[i + 1]))
+                    if (i < expression.Length - 1 && _definer.IsOperatorCharacter(c) && _definer.IsOperatorCharacter(expression[i + 1]))
                     {
                         string possibleOp = char.ToString(c) + expression[i + 1];
-                        if (Definer.Instance().IsOperator(possibleOp))
+                        if (_definer.IsOperator(possibleOp))
                         {
-                            result.Add(new Token(possibleOp));
+                            result.Add(CreateToken(possibleOp));
                             ++i;
                         }
                     }
                     else
                     {
-                        result.Add(new Token(char.ToString(c)));
+                        result.Add(CreateToken(c));
                     }
 
                 }
-                 */
+
                 ++i;
             }
-           /* if (current.Length != 0)
-                result.Add(new MeBasicToken(current));
-               */
+            if (current.Length != 0)
+                result.Add(CreateToken(current));
+
             return result.ToArray();
         }
     }

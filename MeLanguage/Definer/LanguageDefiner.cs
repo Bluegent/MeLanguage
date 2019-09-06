@@ -1,4 +1,6 @@
-﻿namespace MeLanguage.Definer
+﻿using System.Linq;
+
+namespace MeLanguage.Definer
 {
     using System;
     using System.Collections.Generic;
@@ -8,24 +10,82 @@
 
     public class LanguageDefiner
     {
-        private readonly Dictionary<string, Dictionary<int, Function>> _functions ;
+        private readonly Dictionary<string, Dictionary<int, Function>> _functions;
         private readonly Dictionary<string, Dictionary<int, Operator>> _operators;
+        private readonly List<char> _operatorChars;
+
+
+
+        public bool IsFunction(string tokenString)
+        {
+            return _functions.ContainsKey(tokenString);
+        }
+
+        public bool IsOperator(string tokenString)
+        {
+            return _operators.ContainsKey(tokenString);
+        }
+
+        public bool IsOperatorCharacter(char c)
+        {
+            return _operatorChars.Contains(c);
+        }
+
+        public bool IsRightParen(string tokenString)
+        {
+            if (tokenString.Length != 1)
+                return false;
+            if (tokenString[0] == LConstants.RIGHT_PAREN)
+                return true;
+            return false;
+        }
+
+        public bool IsLeftParen(string tokenString)
+        {
+            if (tokenString.Length != 1)
+                return false;
+            if (tokenString[0] == LConstants.LEFT_PAREN)
+                return true;
+            return false;
+        }
+
+        public bool IsIgnored(char c)
+        {
+            return LConstants.IgnoreChars.Contains(c);
+        }
+
+        public bool IsSpecialChar(char c)
+        {
+            return c == LConstants.PARAM_SEPARATOR 
+                || c == LConstants.LEFT_PAREN 
+                || c == LConstants.RIGHT_PAREN 
+                || IsOperatorCharacter(c);
+        }
+
+        public bool IsSeparator(string tokenString)
+        {
+            if (tokenString.Length != 1)
+                return false;
+            if (tokenString[0] == LConstants.PARAM_SEPARATOR)
+                return true;
+            return false;
+        }
 
         public LanguageDefiner()
         {
             _functions = new Dictionary<string, Dictionary<int, Function>>();
             _operators = new Dictionary<string, Dictionary<int, Operator>>();
+            _operatorChars = new List<char>();
         }
 
 
         public static int GetParamHashCode(MeVariable[] parameters, bool paramCount = true)
         {
-            if(paramCount)
+            if (paramCount)
                 return MeArray.GetTypeHashCode(parameters);
-            else
-            {
-                return Operation.GetDynamicParameterAmountHashCode(parameters[0].GetType());
-            }
+
+            return Operation.GetDynamicParameterAmountHashCode(parameters[0].GetType());
+
         }
         public void AddFunction(Function func)
         {
@@ -79,8 +139,14 @@
             }
 
             subOperators.Add(hash, op);
-            if(!_operators.ContainsKey(key))
-                _operators.Add(key,subOperators);
+            if (!_operators.ContainsKey(key))
+                _operators.Add(key, subOperators);
+
+            foreach (char c in op.Key)
+            {
+                if (!_operatorChars.Contains(c))
+                    _operatorChars.Add(c);
+            }
         }
 
         public Operator GetOperator(string key, MeVariable[] parameters)
