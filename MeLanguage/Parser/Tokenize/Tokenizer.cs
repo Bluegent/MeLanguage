@@ -40,7 +40,7 @@ namespace MeLanguage.Parser.Tokenize
         public Token CreateToken(char c)
         {
             string charString = char.ToString(c);
-            return new Token(charString, GetType(charString));
+            return  new Token(charString, GetType(charString));
         }
 
         public Token[] Tokenize(string expression)
@@ -116,7 +116,7 @@ namespace MeLanguage.Parser.Tokenize
                 {
                     if (current.Length != 0)
                     {
-                        result.Add(CreateToken(c));
+                        result.Add(CreateToken(current));
                         current = "";
                     }
                     if (i < expression.Length - 1 && _definer.IsOperatorCharacter(c) && _definer.IsOperatorCharacter(expression[i + 1]))
