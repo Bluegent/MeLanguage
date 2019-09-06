@@ -204,5 +204,26 @@ namespace MeLanguage.Definer.Operators.Mathetmatical
             Assert.IsFalse(op.CanExecute(arr));
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
+
+
+        [TestMethod]
+        public void PowerOperatorCanSubtract()
+        {
+            Operator op = new PowerOperator().Power;
+            MeVariable[] arr = { new MeNumber(10), new MeNumber(2) };
+            Assert.IsTrue(op.CanExecute(arr));
+            const float expected = 100.0f;
+            float result = op.Execute(arr).Get<float>();
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void PowerOperatorThrows()
+        {
+            Operator op = new PowerOperator().Power;
+            MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
+            Assert.IsFalse(op.CanExecute(arr));
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+        }
     }
 }
