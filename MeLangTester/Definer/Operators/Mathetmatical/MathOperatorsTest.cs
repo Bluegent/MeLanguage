@@ -132,5 +132,24 @@ namespace Language.Definer.Operators.Mathetmatical
             TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
         }
 
+
+
+        [TestMethod]
+        public void LesserOperatorCanCompare()
+        {
+            Operator op = new LesserOperator().Lesser;
+            MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            bool result = op.Execute(arr).Get<bool>();
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void LesserrOperatorThrows()
+        {
+            Operator op = new LesserOperator().Lesser;
+            MeVariable[] arr = { new MeString("test"), new MeNumber(10) };
+
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+        }
     }
 }
