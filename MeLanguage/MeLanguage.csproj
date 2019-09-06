@@ -42,13 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definer\Utility\CommonParamTypes.cs" />
+    <Compile Include="Definer\Utility\CommonValidators.cs" />
     <Compile Include="Definer\Creation\DefinerFactory.cs" />
     <Compile Include="Definer\Functions\Mathematical\AbsFunction.cs" />
     <Compile Include="Definer\Functions\Mathematical\MaxFunction.cs" />
     <Compile Include="Definer\Functions\Mathematical\MinFunction.cs" />
     <Compile Include="Definer\Functions\Mathematical\NonNegFunction.cs" />
     <Compile Include="Definer\LConstants.cs" />
-    <Compile Include="Definer\Utils.cs" />
+    <Compile Include="Definer\Utility\Utils.cs" />
     <Compile Include="Definer\Function.cs" />
     <Compile Include="Definer\LanguageDefiner.cs" />
     <Compile Include="Definer\Operation.cs" />

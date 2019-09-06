@@ -17,8 +17,8 @@ namespace MeLanguage.Definer.Functions.Mathematical
                 {
                     func.CheckParamCount(values.Length);
                     float[] parameters = MeArray.ToFloatArray(values);
-                    MeNumber maxNumber = parameters.Max();
-                    return maxNumber;
+                    MeNumber result = parameters.Min();
+                    return result;
                 }, CommonParamTypes.SingleNumber, CommonValidators.NumberArray, false);
         }
 
