@@ -1,6 +1,6 @@
 ﻿namespace MeLanguage.Definer
 {
-
+    using System;
 
     public class Function : Operation
     {
@@ -15,9 +15,8 @@
             return _executeInPlace[index];
 
         }
-        public Function(string key, int parameterCount = -1, bool[] executeInPlace = null) : base(key, parameterCount)
+        public Function(string key, Type[] types, bool[] executeInPlace = null) : base(key, types)
         {
-            ParameterCount = parameterCount;
             _executeInPlace = executeInPlace;
         }
     }

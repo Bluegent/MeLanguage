@@ -26,6 +26,14 @@ namespace MeLanguage.Definer
                 });
     }
 
+    public static class CommonParamTypes
+    {
+        public static readonly Type[] TwoNumbers = { typeof(MeNumber),typeof(MeNumber)};
+        public static readonly Type[] Number = { typeof(MeNumber)};
+        public static readonly Type[] Boolean = { typeof(MeBoolean) };
+    }
+
+
     public class Utils
     {
         public static Operator MakeOperator(
@@ -34,17 +42,17 @@ namespace MeLanguage.Definer
             bool leftAssoc,
             Func<MeVariable[], Operation, MeVariable> operation,
             Validator valid,
-            int opCount = 2)
+            Type[] operatorTypes)
         {
-            Operator op = new Operator(character, precedence, leftAssoc, opCount);
+            Operator op = new Operator(character, precedence, leftAssoc, operatorTypes);
             op.OpFunc = operation;
             op.Validator = valid;
             return op;
         }
 
-        public static Function MakeFunction(string name, Func<MeVariable[], Operation, MeVariable> operation, int parameterCount = -1, bool[] executeInPlace = null)
+        public static Function MakeFunction(string name, Func<MeVariable[], Operation, MeVariable> operation, Type[] parameterTypes, bool[] executeInPlace = null)
         {
-            Function func = new Function(name, parameterCount, executeInPlace);
+            Function func = new Function(name, parameterTypes, executeInPlace);
             func.OpFunc = operation;
             return func;
         }

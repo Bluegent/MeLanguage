@@ -17,7 +17,7 @@
                         variables[0].Get<bool>();
                         return true;
                     })
-                , 1);
+                , CommonParamTypes.Boolean);
         }
     }
 }

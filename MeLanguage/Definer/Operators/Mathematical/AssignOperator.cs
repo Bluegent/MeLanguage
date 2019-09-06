@@ -11,7 +11,7 @@ namespace MeLanguage.Definer.Operators.Mathematical
             return Utils.MakeOperator(LConstants.ASSIGN_OP, -1, true, (values, op) =>
                     {
                         throw new NotImplementedException();
-                    }, new Validator((variables, operation) => true), 2);
+                    }, new Validator((variables, operation) => true), null);
         }
     }
 }

@@ -15,7 +15,7 @@
                             op.CheckParamCount(values.Length);
                             MeNumber result = (float)Math.Pow(values[0].Get<float>(), values[1].Get<float>());
                             return result;
-                        }, CommonValidators.TwoNumbers);
+                        }, CommonValidators.TwoNumbers, CommonParamTypes.TwoNumbers);
         }
     }
 }

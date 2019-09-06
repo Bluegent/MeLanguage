@@ -16,7 +16,7 @@
                         op.CheckParamCount(values.Length);
                         MeBoolean value = MathUtils.DoubleEq(values[0].Get<float>(), values[1].Get<float>());
                         return value;
-                    }, CommonValidators.TwoNumbers);
+                    }, CommonValidators.TwoNumbers, CommonParamTypes.TwoNumbers);
         }
     }
 }

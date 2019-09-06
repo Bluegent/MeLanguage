@@ -6,6 +6,8 @@ using MeLanguage.Definer;
 
 namespace MeLanguage.Definer
 {
+    using System.Collections.Generic;
+
     using MeLanguage.Types.Exceptions;
     using MeLanguage.Types.Var;
 
@@ -14,12 +16,16 @@ namespace MeLanguage.Definer
         public string Key { get; }
         public Validator Validator { private get; set; }
         public Func<MeVariable[], Operation, MeVariable> OpFunc { private get; set; }
-        public int ParameterCount { get; protected set; }
 
-        protected Operation(string key, int parameterCount = -1)
+        public bool HasParamCount;
+
+        public readonly Type[] AcceptedTypes;
+
+        protected Operation(string key, Type[] types, bool paramCount = false)
         {
             Key = key;
-            ParameterCount = parameterCount;
+            AcceptedTypes = types;
+            HasParamCount = paramCount;
         }
 
         public bool CanExecute(MeVariable[] parameters)
@@ -33,8 +39,13 @@ namespace MeLanguage.Definer
 
         public void CheckParamCount(int parameterCount)
         {
-            if (ParameterCount != -1 && parameterCount != ParameterCount)
-                throw new MeException($"Invalid argument count for operation {Key}, got: {parameterCount} expected:  {ParameterCount} .");
+            if (HasParamCount && parameterCount != AcceptedTypes.Length)
+                throw new MeException($"Invalid argument count for operation {Key}, got: {parameterCount} expected:  {AcceptedTypes.Length} .");
+        }
+
+        public override int GetHashCode()
+        {
+            return AcceptedTypes.GetHashCode();
         }
     }
 }

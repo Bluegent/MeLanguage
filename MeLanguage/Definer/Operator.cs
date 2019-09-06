@@ -1,6 +1,8 @@
 ﻿
 namespace MeLanguage.Definer
 {
+    using System;
+
     public class Operator : Operation
     {
         public int Precedence { get; }
@@ -15,9 +17,9 @@ namespace MeLanguage.Definer
 
         public bool IsUnary()
         {
-            return ParameterCount == 1;
+            return AcceptedTypes.Length == 1;
         }
-        public Operator(string key, int precedence, bool leftAsoc, int operatorCount = 2) : base(key,operatorCount)
+        public Operator(string key, int precedence, bool leftAsoc, Type[] types) : base(key,types)
         {
             Precedence = precedence;
             LeftAsoc = leftAsoc;
