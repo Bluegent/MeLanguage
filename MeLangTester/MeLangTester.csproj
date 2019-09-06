@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definer\DefinerTest.cs" />
+    <Compile Include="Definer\Operators\Mathetmatical\MathOperatorsTest.cs" />
     <Compile Include="TestUtils.cs" />
     <Compile Include="Types\Var\MeNumberTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +64,9 @@
       <Project>{ccb4f3dc-f04c-488b-b4c8-8ddb5fac55a4}</Project>
       <Name>MeLanguage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Definer\Functions\Mathematical\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
