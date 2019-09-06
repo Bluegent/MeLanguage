@@ -113,5 +113,24 @@ namespace Language.Definer.Operators.Mathetmatical
             TestUtils.CustomExceptionTest( ()=> op.Execute(arr), typeof(MeContextException));
         }
 
+
+        [TestMethod]
+        public void GreaterOperatorCanCompare()
+        {
+            Operator op = new GreaterOperator().Greater;
+            MeVariable[] arr = { new MeNumber(10), new MeNumber(20) };
+            bool result = op.Execute(arr).Get<bool>();
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void GreaterOperatorThrows()
+        {
+            Operator op = new GreaterOperator().Greater;
+            MeVariable[] arr = { new MeString("test") , new MeNumber(10)};
+
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+        }
+
     }
 }
