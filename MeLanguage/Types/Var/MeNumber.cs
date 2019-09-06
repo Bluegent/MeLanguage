@@ -12,7 +12,7 @@ namespace Language.Types.Var
             Type tType = typeof(T);
             if (tType == typeof(int) || tType == typeof(float) || tType == typeof(long))
                 return (T)Convert.ChangeType(_value, typeof(T));
-            throw new MeInvalidCastException(this, tType);
+            throw Except(typeof(T));
 
         }
 

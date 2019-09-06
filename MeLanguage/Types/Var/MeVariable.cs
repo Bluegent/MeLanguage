@@ -12,6 +12,10 @@ namespace Language.Types.Var
             Type = obj.GetType();
         }
 
+        public MeInvalidCastException Except(Type t)
+        {
+            return new MeInvalidCastException(this,t);
+        }
         public abstract T Get<T>();
 
         public abstract override string ToString();

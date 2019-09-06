@@ -46,6 +46,7 @@
     <Compile Include="Types\Exceptions\MeException.cs" />
     <Compile Include="Types\Exceptions\MeInvalidCastException.cs" />
     <Compile Include="Types\Var\MeNumber.cs" />
+    <Compile Include="Types\Var\MeStruct.cs" />
     <Compile Include="Types\Var\MeVariable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

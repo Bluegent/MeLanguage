@@ -49,8 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestUtils.cs" />
     <Compile Include="Types\Var\MeNumberTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\Var\MeStructTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

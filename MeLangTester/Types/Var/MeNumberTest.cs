@@ -40,16 +40,8 @@ namespace MeLangTester.Types.Var
         {
             float value = 3.15f;
             MeVariable var = new MeNumber(value);
-            try
-            {
-                var.Get<string>();
-                Assert.Fail("No exception was thrown.");
-            }
-            catch (MeInvalidCastException exception)
-            {
-                Console.WriteLine(exception.Message);
-                
-            }
+            void TestAction() => var.Get<string>();
+            TestUtils.CustomExceptionTest(TestAction, typeof(MeInvalidCastException));
         }
 
         [TestMethod]
@@ -57,16 +49,8 @@ namespace MeLangTester.Types.Var
         {
             long value = 123456789;
             MeVariable var = new MeNumber(value);
-            try
-            {
-                var.Get<string>();
-                Assert.Fail("No exception was thrown.");
-            }
-            catch (MeInvalidCastException exception)
-            {
-                Console.WriteLine(exception.Message);
-
-            }
+            void TestAction() => var.Get<string>();
+            TestUtils.CustomExceptionTest(TestAction, typeof(MeInvalidCastException));
         }
     }
 }

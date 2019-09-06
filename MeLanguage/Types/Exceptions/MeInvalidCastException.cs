@@ -6,7 +6,7 @@ using Language.Types.Var;
 public class MeInvalidCastException : MeException
 {
     public MeInvalidCastException(MeVariable var, Type t)
-        : base($"Invalid cast of {var}({var.Type}) to {t.ToString()}.")
+        : base($"Invalid cast of {var}({var.GetType()}) to {t.ToString()}.")
     {
     }
 }
