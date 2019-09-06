@@ -1,4 +1,6 @@
-﻿namespace MeLanguage.Definer.Functions.Mathematical
+﻿using MeLanguage.Definer.Utility;
+
+namespace MeLanguage.Definer.Functions.Mathematical
 {
     using System.Linq;
 
