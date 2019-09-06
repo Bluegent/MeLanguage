@@ -1,4 +1,6 @@
 ﻿
+using MeLanguage.Types.Exceptions;
+
 namespace MeLanguage.Parser.Tokenize
 {
     using Definer;
@@ -98,8 +100,8 @@ namespace MeLanguage.Parser.Tokenize
                         switch (prev.Type)
                         {
                             case TokenType.Function:
-                                throw new Exception(
-                                    $"Found minus after function with no (, function:\"{prev.Value}\".");
+                                throw new MeException(
+                                    $"Found minus after function with no (, function:\"{prev.Value}\" in expression \"{expression}\".");
                             case TokenType.Variable:
                             case TokenType.RightParen:
                                 result.Add(CreateToken(c));
