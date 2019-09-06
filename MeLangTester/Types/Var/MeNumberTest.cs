@@ -1,9 +1,8 @@
-﻿
-using MeLanguage.Types.Var;
+﻿using MeLangTester;
 using MeLanguage.Types.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace MeLangTester.Types.Var
+namespace MeLanguage.Types.Var
 {
 
     [TestClass]

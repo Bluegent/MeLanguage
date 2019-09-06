@@ -1,12 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using MeLanguage.Definer.Functions.Mathematical;
+using MeLanguage.Definer.Operators.Mathematical;
+using MeLanguage.Types.Var;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Language.Definer
+namespace MeLanguage.Definer
 {
-    using MeLanguage.Definer;
-    using MeLanguage.Definer.Functions.Mathematical;
-    using MeLanguage.Definer.Operators.Mathematical;
-    using MeLanguage.Types.Var;
-
     [TestClass]
     public class DefinerTest
     {

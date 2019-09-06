@@ -8,11 +8,11 @@ namespace MeLanguage.Definer.Functions.Mathematical
 
     public class MinFunction : IFunctionDefiner
     {
-        public Function MinFunc { get; }
+        public Function Min { get; }
 
         public MinFunction()
         {
-            MinFunc = Utils.MakeFunction(LConstants.MIN_F,
+            Min = Utils.MakeFunction(LConstants.MIN_F,
                 (values, func) =>
                 {
                     func.CheckParamCount(values.Length);
@@ -25,7 +25,7 @@ namespace MeLanguage.Definer.Functions.Mathematical
         public void AddFunction(LanguageDefiner definer)
         {
                
-            definer.AddFunction(MinFunc);
+            definer.AddFunction(Min);
         }
     }
 }
