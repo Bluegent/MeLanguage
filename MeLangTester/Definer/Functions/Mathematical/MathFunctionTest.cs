@@ -66,7 +66,10 @@ namespace MeLanguage.Definer.Functions.Mathematical
         {
             float expected = 100.0f;
             MeVariable[] input = { new MeNumber(-1 * expected)};
-            TestUtils.SuccessfulFunctionTest(input, new Absfunction().Abs, expected);
+            MeVariable[] input2 = {new MeNumber(expected)};            
+            Function func = new AbsFunction().Abs;
+            TestUtils.SuccessfulFunctionTest(input, func, expected);
+            TestUtils.SuccessfulFunctionTest(input2, func, expected);
 
         }
 
@@ -74,7 +77,28 @@ namespace MeLanguage.Definer.Functions.Mathematical
         public void AbsFunctionThrows()
         {
             MeVariable[] input = { new MeString("test")};
-            TestUtils.ThrowingFunctionTest(input, new Absfunction().Abs, typeof(MeContextException));
+            TestUtils.ThrowingFunctionTest(input, new AbsFunction().Abs, typeof(MeContextException));
+        }
+
+
+        [TestMethod]
+        public void NonNegFunctionCanExecute()
+        {
+            float expected = 0;
+            float expected2 = 50;
+            MeVariable[] input = { new MeNumber(-300) };
+            MeVariable[] input2 = { new MeNumber(expected2) };
+            Function func = new NonNegFunction().NonNeg;
+            TestUtils.SuccessfulFunctionTest(input, func, expected);
+            TestUtils.SuccessfulFunctionTest(input2, func, expected2);
+
+        }
+
+        [TestMethod]
+        public void NonNegFunctionThrows()
+        {
+            MeVariable[] input = { new MeString("test") };
+            TestUtils.ThrowingFunctionTest(input, new NonNegFunction().NonNeg, typeof(MeContextException));
         }
     }
 }

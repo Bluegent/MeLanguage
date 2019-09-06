@@ -2,22 +2,28 @@
 
 namespace MeLanguage.Definer.Functions.Mathematical
 {
-    using MeLanguage.Types.Var;
+    using Types.Var;
 
     public class NonNegFunction : IFunctionDefiner
     {
+
+        public Function NonNeg;
+
+        public NonNegFunction()
+        {
+            NonNeg = Utils.MakeFunction(LConstants.NON_NEG_F,
+                (values, func) =>
+                {
+                    func.CheckParamCount(values.Length);
+                    float value = values[0].Get<float>();
+                    MeNumber result = value > 0 ? value : 0;
+                    return result;
+                }, CommonParamTypes.SingleNumber, CommonValidators.SingleNumber);
+        }
         public void AddFunction(LanguageDefiner definer)
         {
-            Function nonNeg =
-                Utils.MakeFunction(LConstants.NON_NEG_F,
-                    (values, func) =>
-                        {
-                            func.CheckParamCount(values.Length);
-                            float value = values[0].Get<float>();
-                            MeNumber result = value > 0 ? value : 0;
-                            return result;
-                        }, CommonParamTypes.SingleNumber,CommonValidators.SingleNumber);
-            definer.AddFunction(nonNeg);
+
+            definer.AddFunction(NonNeg);
         }
     }
 }

@@ -7,11 +7,11 @@ namespace MeLanguage.Definer.Functions.Mathematical
 
     using Types.Var;
 
-    public class Absfunction : IFunctionDefiner
+    public class AbsFunction : IFunctionDefiner
     {
         public Function Abs { get; }
 
-        public Absfunction()
+        public AbsFunction()
         {
             Abs = Utils.MakeFunction(LConstants.ABS_F,
                 (values, func) =>
