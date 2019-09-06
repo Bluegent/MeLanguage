@@ -3,6 +3,8 @@
     using System;
     using System.Text;
 
+    using MeLanguage.Utility;
+
     public class MeArray : MeVariable
     {
         public MeArray(MeVariable[] obj)
@@ -32,25 +34,23 @@
             return numArr;
         }
 
-        private const int HASH_BASE = 17;
 
-        private const int HASH_MULT = 23;
         public static int GetTypeHashCode(MeVariable[] arr)
         {
-            int hash = HASH_BASE;
+            int hash = GlobalConstants.HASH_BASE;
             foreach (MeVariable var in arr)
             {
-                hash = hash * HASH_MULT + var.GetType().GetHashCode();
+                hash = hash * GlobalConstants.HASH_MULTIPLIER + var.GetType().GetHashCode();
             }
             return hash;
         }
 
         public static int GetHashCode(Type[] arr)
         {
-            int hash = HASH_BASE;
+            int hash = GlobalConstants.HASH_BASE;
             foreach (Type var in arr)
             {
-                hash = hash * HASH_MULT + var.GetHashCode();
+                hash = hash * GlobalConstants.HASH_MULTIPLIER + var.GetHashCode();
             }
             return hash;
         }

@@ -5,6 +5,7 @@ namespace Language.Definer
 {
     using MeLanguage.Definer;
     using MeLanguage.Definer.Functions.Mathematical;
+    using MeLanguage.Definer.Operators.Mathematical;
     using MeLanguage.Types.Var;
 
     [TestClass]
@@ -40,6 +41,31 @@ namespace Language.Definer
             Assert.IsNotNull(retFunc);
             Assert.IsNotNull(retFunc2);
             Assert.AreEqual(retFunc, retFunc2);
+        }
+
+
+        [TestMethod]
+        public void CanDistinguishOperatorsBasedOnParameterType()
+        {
+            LanguageDefiner definer = new LanguageDefiner();
+            IOperatorDefiner equalsOp = new EqualsOperator();
+            equalsOp.AddOperator(definer);
+
+            string testStr = "test";
+            MeVariable[] strArr = {new MeString(testStr), new MeString(testStr) };
+            Operator strEquals = definer.GetOperator(LConstants.EQUAL_OP, strArr);
+
+            Assert.IsNotNull(strEquals);
+            Assert.IsTrue(strEquals.Execute(strArr).Get<bool>());
+
+            float number = 10.3f;
+            MeVariable[] numArr = { new MeNumber(number), new MeNumber(number) };
+            Operator numEquals = definer.GetOperator(LConstants.EQUAL_OP, numArr);
+
+            Assert.IsNotNull(numEquals);
+            Assert.IsTrue(numEquals.Execute(numArr).Get<bool>());
+
+
         }
     }
 }

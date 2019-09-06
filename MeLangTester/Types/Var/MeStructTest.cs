@@ -14,8 +14,6 @@ namespace MeLangTester.Types.Var
         {
             string structName = "TEST_STRUCT";
             MeVariable aStruct = new MeStruct(structName);
-
-            Assert.AreEqual(structName,aStruct.Get<string>());
             MeStruct castedStruct = aStruct.Get<MeStruct>();
             Assert.IsNotNull(castedStruct);
             Assert.AreEqual(structName, castedStruct.GetName());

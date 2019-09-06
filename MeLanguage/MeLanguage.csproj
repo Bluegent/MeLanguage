@@ -57,7 +57,7 @@
     <Compile Include="Definer\Operators\Mathematical\MinusOperator.cs" />
     <Compile Include="Definer\Operators\Mathematical\MultiplyOperator.cs" />
     <Compile Include="Definer\Operators\Mathematical\NotOperator.cs" />
-    <Compile Include="Definer\Operators\Mathematical\NumEqualsOperator.cs" />
+    <Compile Include="Definer\Operators\Mathematical\EqualsOperator.cs" />
     <Compile Include="Definer\Operators\Mathematical\PlusOperator.cs" />
     <Compile Include="Definer\Operators\Mathematical\PowerOperator.cs" />
     <Compile Include="Definer\Validator.cs" />
@@ -70,8 +70,10 @@
     <Compile Include="Types\Var\MeBoolean.cs" />
     <Compile Include="Types\Var\MeMarkers.cs" />
     <Compile Include="Types\Var\MeNumber.cs" />
+    <Compile Include="Types\Var\MeString.cs" />
     <Compile Include="Types\Var\MeStruct.cs" />
     <Compile Include="Types\Var\MeVariable.cs" />
+    <Compile Include="Utility\GlobalConstants.cs" />
     <Compile Include="Utility\MathUtils.cs" />
   </ItemGroup>
   <ItemGroup>

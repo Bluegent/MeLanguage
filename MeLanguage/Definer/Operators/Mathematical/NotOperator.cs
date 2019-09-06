@@ -18,7 +18,7 @@
                         variables[0].Get<bool>();
                         return true;
                     })
-                , CommonParamTypes.Boolean);
+                , CommonParamTypes.SingleBoolean);
             definer.AddOperator(not);
         }
     }

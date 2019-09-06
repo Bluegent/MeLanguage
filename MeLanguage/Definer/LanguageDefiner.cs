@@ -18,9 +18,14 @@
         }
 
 
-        public static int GetParamHashCode(MeVariable[] parameters)
+        public static int GetParamHashCode(MeVariable[] parameters, bool paramCount = true)
         {
-            return MeArray.GetTypeHashCode(parameters);
+            if(paramCount)
+                return MeArray.GetTypeHashCode(parameters);
+            else
+            {
+                return Operation.GetDynamicParameterAmountHashCode(parameters[0].GetType());
+            }
         }
         public void AddFunction(Function func)
         {
@@ -45,9 +50,20 @@
                 return null;
             }
 
-            int hash = GetParamHashCode(parameters);
+            //first try with dynamic parameter count
+            int hash = GetParamHashCode(parameters, false);
 
-            return subFunctions.ContainsKey(hash) ? subFunctions[hash] : null;
+            Function func = subFunctions.ContainsKey(hash) ? subFunctions[hash] : null;
+
+            if (func != null)
+            {
+                return func;
+            }
+            //then try with static param number
+            hash = GetParamHashCode(parameters);
+            func = subFunctions.ContainsKey(hash) ? subFunctions[hash] : null;
+
+            return func;
 
         }
 
@@ -74,8 +90,21 @@
             {
                 return null;
             }
-            int hash = GetParamHashCode(parameters);
-            return subOperators.ContainsKey(hash) ? subOperators[hash] : null;
+
+            //first try with dynamic parameter count
+            int hash = GetParamHashCode(parameters, false);
+
+            Operator op = subOperators.ContainsKey(hash) ? subOperators[hash] : null;
+
+            if (op != null)
+            {
+                return op;
+            }
+            //then try with static param number
+            hash = GetParamHashCode(parameters);
+            op = subOperators.ContainsKey(hash) ? subOperators[hash] : null;
+
+            return op;
         }
     }
 }

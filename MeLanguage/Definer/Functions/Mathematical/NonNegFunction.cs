@@ -14,7 +14,7 @@
                             float value = values[0].Get<float>();
                             MeNumber result = value > 0 ? value : 0;
                             return result;
-                        }, CommonParamTypes.Number);
+                        }, CommonParamTypes.SingleNumber);
             definer.AddFunction(nonNeg);
         }
     }

@@ -6,10 +6,11 @@ using MeLanguage.Definer;
 
 namespace MeLanguage.Definer
 {
-    using System.Collections.Generic;
+    using System.Security.Policy;
 
     using MeLanguage.Types.Exceptions;
     using MeLanguage.Types.Var;
+    using MeLanguage.Utility;
 
     public class Operation
     {
@@ -23,9 +24,19 @@ namespace MeLanguage.Definer
 
         public readonly Type[] AcceptedTypes;
 
+
+        public static int GetDynamicParameterAmountHashCode(Type varType)
+        {
+            int arrayHash = varType.GetHashCode();
+            int hash = GlobalConstants.HASH_BASE;
+            hash = GlobalConstants.HASH_MULTIPLIER * hash + arrayHash;
+            hash = GlobalConstants.HASH_MULTIPLIER * hash + false.GetHashCode();
+            return hash;
+        }
+
         private int CalcHashCode()
         {
-            return MeArray.GetHashCode(AcceptedTypes);
+            return _hasParamCount ? MeArray.GetHashCode(AcceptedTypes) : GetDynamicParameterAmountHashCode(AcceptedTypes[0]);
         }
 
         protected Operation(string key, Func<MeVariable[], Operation, MeVariable> operation, Type[] types, bool paramCount)

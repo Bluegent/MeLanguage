@@ -24,13 +24,22 @@ namespace MeLanguage.Definer
                     values[1].Get<float>();
                     return true;
                 });
+        public static readonly Validator TwoStrings = new Validator(
+            (values, op) =>
+                {
+                    values[0].Get<string>();
+                    values[1].Get<string>();
+                    return true;
+                });
     }
 
     public static class CommonParamTypes
     {
         public static readonly Type[] TwoNumbers = { typeof(MeNumber),typeof(MeNumber)};
-        public static readonly Type[] Number = { typeof(MeNumber)};
-        public static readonly Type[] Boolean = { typeof(MeBoolean) };
+        public static readonly Type[] SingleNumber = { typeof(MeNumber)};
+        public static readonly Type[] SingleBoolean = { typeof(MeBoolean) };
+        public static readonly Type[] TwoStrings = { typeof(MeString), typeof(MeString) };
+        public static readonly Type[] SingleString = { typeof(MeString) };
     }
 
 

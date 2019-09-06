@@ -39,8 +39,6 @@ namespace MeLanguage.Types.Var
         public override T Get<T>()
         {
             Type tType = typeof(T);
-            if (tType == typeof(string))
-                return (T)_value;
             if (tType == typeof(MeStruct))
                 return (T)Convert.ChangeType(this,typeof(T));
 
