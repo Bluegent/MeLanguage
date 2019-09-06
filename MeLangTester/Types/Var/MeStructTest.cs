@@ -25,8 +25,8 @@ namespace MeLangTester.Types.Var
         {
             string structName = "TEST_STRUCT";
             MeVariable aStruct = new MeStruct(structName);
-            void TestMethod() => aStruct.Get<long>();
-            TestUtils.CustomExceptionTest(TestMethod,typeof(MeInvalidCastException));
+            TestUtils.CustomExceptionTest(() => aStruct.Get<long>(), typeof(MeInvalidCastException));
         }
     }
+
 }

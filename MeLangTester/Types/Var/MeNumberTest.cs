@@ -40,8 +40,7 @@ namespace MeLangTester.Types.Var
         {
             float value = 3.15f;
             MeVariable var = new MeNumber(value);
-            void TestAction() => var.Get<string>();
-            TestUtils.CustomExceptionTest(TestAction, typeof(MeInvalidCastException));
+            TestUtils.CustomExceptionTest(() => var.Get<string>(), typeof(MeInvalidCastException));
         }
 
         [TestMethod]
@@ -49,8 +48,7 @@ namespace MeLangTester.Types.Var
         {
             long value = 123456789;
             MeVariable var = new MeNumber(value);
-            void TestAction() => var.Get<string>();
-            TestUtils.CustomExceptionTest(TestAction, typeof(MeInvalidCastException));
+            TestUtils.CustomExceptionTest(() => var.Get<string>(), typeof(MeInvalidCastException));
         }
     }
 }
