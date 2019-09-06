@@ -30,8 +30,6 @@ namespace Language.Definer.Operators.Mathetmatical
         public void DivideOperatorThrowsException()
         {
             Operator divide = new DivideOperator().Divide;
-
-            float expected = 10.0f;
             MeVariable[] arr =  { new MeString("TEST"), new MeNumber(10) };
             TestUtils.CustomExceptionTest( () => divide.Execute(arr),typeof(MeContextException));
 
@@ -39,7 +37,7 @@ namespace Language.Definer.Operators.Mathetmatical
 
 
         [TestMethod]
-        public void MultiplyOperatorTest()
+        public void MultiplyOperatorCanMultiply()
         {
             Operator op = new MultiplyOperator().Multiply;
 
@@ -51,7 +49,18 @@ namespace Language.Definer.Operators.Mathetmatical
         }
 
         [TestMethod]
-        public void EqualsOperatorStringTest()
+        public void MultiplyOperatorThrowsException()
+        {
+            Operator op = new MultiplyOperator().Multiply;
+
+            MeVariable[] arr = { new MeString("TEST"), new MeNumber(10) };
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+
+        }
+
+
+        [TestMethod]
+        public void NumberEqualsCanCompare()
         {
             Operator op = new EqualsOperator().NumberEquals;
             float testNumber = 1337.0f;
@@ -62,7 +71,26 @@ namespace Language.Definer.Operators.Mathetmatical
 
 
         [TestMethod]
-        public void EqualsOperatorNumberTest()
+        public void NumberEqualsCanThrow()
+        {
+            Operator op = new EqualsOperator().NumberEquals;
+            MeVariable[] arr = { new MeStruct(""), new MeNumber(10)};
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+
+        }
+
+        [TestMethod]
+        public void StringEqualsCanThrow()
+        {
+            Operator op = new EqualsOperator().NumberEquals;
+            string testString = "TEST";
+            MeVariable[] arr = { new MeStruct(testString), new MeString(testString),  };
+            TestUtils.CustomExceptionTest(() => op.Execute(arr), typeof(MeContextException));
+        }
+
+
+        [TestMethod]
+        public void StringEqualsCanCompare()
         {
             Operator op = new EqualsOperator().StringEquals;
             string testString = "TEST_STR";
