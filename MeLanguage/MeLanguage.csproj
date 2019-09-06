@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definer\Functions\Mathematical\MaxFunction.cs" />
+    <Compile Include="Definer\Functions\Mathematical\NonNegFunction.cs" />
     <Compile Include="Definer\LConstants.cs" />
     <Compile Include="Definer\Utils.cs" />
     <Compile Include="Definer\Function.cs" />

@@ -20,12 +20,7 @@
 
         public static int GetParamHashCode(MeVariable[] parameters)
         {
-            Type[] paramTypes = new Type[parameters.Length];
-            for (int index = 0; index < parameters.Length; ++index)
-            {
-                paramTypes[index] = parameters[index].GetType();
-            }
-            return paramTypes.GetHashCode();
+            return MeArray.GetTypeHashCode(parameters);
         }
         public void AddFunction(Function func)
         {

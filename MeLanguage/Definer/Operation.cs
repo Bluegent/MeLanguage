@@ -25,10 +25,7 @@ namespace MeLanguage.Definer
 
         private int CalcHashCode()
         {
-            int hash = 17;
-            hash = hash * 23 + AcceptedTypes.GetHashCode();
-            hash = hash * 23 + _hasParamCount.GetHashCode();
-            return hash;
+            return MeArray.GetHashCode(AcceptedTypes);
         }
 
         protected Operation(string key, Func<MeVariable[], Operation, MeVariable> operation, Type[] types, bool paramCount)
