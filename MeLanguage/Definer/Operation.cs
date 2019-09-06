@@ -7,12 +7,13 @@ using MeLanguage.Definer;
 namespace MeLanguage.Definer
 {
     using System.Security.Policy;
+    using System.Text;
 
     using MeLanguage.Types.Exceptions;
     using MeLanguage.Types.Var;
     using MeLanguage.Utility;
 
-    public class Operation
+    public abstract class Operation
     {
         public string Key { get; }
         public Validator Validator { private get; set; }
@@ -54,7 +55,14 @@ namespace MeLanguage.Definer
         }
         public MeVariable Execute(MeVariable[] parameters)
         {
-            return _operation.Invoke(parameters, this);
+            try
+            {
+                return _operation.Invoke(parameters, this);
+            }
+            catch (MeInvalidCastException e)
+            {
+                throw new MeContextException(e.Message, OperationString(parameters));
+            }
         }
 
         public void CheckParamCount(int parameterCount)
@@ -66,6 +74,24 @@ namespace MeLanguage.Definer
         public override int GetHashCode()
         {
             return _hash;
+        }
+
+        public string OperationString(MeVariable[] parameters)
+        {
+            StringBuilder builder = new StringBuilder(Key);
+            builder.Append("(");
+            if (parameters.Length != 0)
+            {
+                foreach (MeVariable var in parameters)
+                {
+                    builder.Append(var);
+                    builder.Append(", ");
+                }
+                builder.Remove(builder.Length - 2, 2);
+            }
+
+            builder.Append(")");
+            return builder.ToString();
         }
     }
 }

@@ -19,7 +19,7 @@
 
         public override string ToString()
         {
-            return (string)_value;
+            return $"\"{_value}\"";
         }
 
         public static implicit operator MeString(string str)
