@@ -33,7 +33,7 @@ namespace MeLanguage.Types.Var
 
         public override string ToString()
         {
-            return _value.ToString();
+            return $"{MeMarkers.NUMBER_MARKER}{_value}";
         }
 
         public MeNumber(float obj)
@@ -50,5 +50,6 @@ namespace MeLanguage.Types.Var
             : base(obj)
         {
         }
+
     }
 }

@@ -19,7 +19,7 @@
 
         public override string ToString()
         {
-            return $"\"{_value}\"";
+            return $"{MeMarkers.STRING_MARKER}\"{_value}\"";
         }
 
         public static implicit operator MeString(string str)
