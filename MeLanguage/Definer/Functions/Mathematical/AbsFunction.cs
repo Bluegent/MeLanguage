@@ -1,4 +1,5 @@
-﻿using MeLanguage.Definer.Utility;
+﻿using System;
+using MeLanguage.Definer.Utility;
 
 namespace MeLanguage.Definer.Functions.Mathematical
 {
@@ -16,10 +17,9 @@ namespace MeLanguage.Definer.Functions.Mathematical
                 (values, func) =>
                 {
                     func.CheckParamCount(values.Length);
-                    float[] parameters = MeArray.ToFloatArray(values);
-                    MeNumber maxNumber = parameters.Max();
-                    return maxNumber;
-                }, CommonParamTypes.SingleNumber,CommonValidators.SingleNumber, false);
+                    MeNumber result = (float) Math.Abs(values[0].Get<float>());
+                    return result;
+                }, CommonParamTypes.SingleNumber,CommonValidators.SingleNumber);
         }
 
         public void AddFunction(LanguageDefiner definer)

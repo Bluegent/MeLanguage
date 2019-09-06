@@ -59,5 +59,22 @@ namespace MeLanguage.Definer.Functions.Mathematical
             Assert.IsFalse(func.CanExecute(input));
             TestUtils.CustomExceptionTest(() => func.Execute(input), typeof(MeContextException));
         }
+
+
+        [TestMethod]
+        public void AbsFunctionCanExecute()
+        {
+            float expected = 100.0f;
+            MeVariable[] input = { new MeNumber(-1 * expected)};
+            TestUtils.SuccessfulFunctionTest(input, new Absfunction().Abs, expected);
+
+        }
+
+        [TestMethod]
+        public void AbsFunctionThrows()
+        {
+            MeVariable[] input = { new MeString("test")};
+            TestUtils.ThrowingFunctionTest(input, new Absfunction().Abs, typeof(MeContextException));
+        }
     }
 }
