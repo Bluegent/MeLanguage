@@ -22,5 +22,18 @@ namespace Language.Definer.Operators.Mathetmatical
             Assert.AreEqual(expected,result);
 
         }
+
+
+        [TestMethod]
+        public void MultiplyOperatorTest()
+        {
+            Operator op = new MultiplyOperator().Multiply;
+
+            float expected = 100.0f;
+            float result = op.Execute(new[] { new MeNumber(10), new MeNumber(10), }).Get<float>();
+
+            Assert.AreEqual(expected, result);
+
+        }
     }
 }
