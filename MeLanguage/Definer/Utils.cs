@@ -44,16 +44,14 @@ namespace MeLanguage.Definer
             Validator valid,
             Type[] operatorTypes)
         {
-            Operator op = new Operator(character, precedence, leftAssoc, operatorTypes);
-            op.OpFunc = operation;
+            Operator op = new Operator(character, precedence, leftAssoc,operation, operatorTypes);
             op.Validator = valid;
             return op;
         }
 
-        public static Function MakeFunction(string name, Func<MeVariable[], Operation, MeVariable> operation, Type[] parameterTypes, bool[] executeInPlace = null)
+        public static Function MakeFunction(string name, Func<MeVariable[], Operation, MeVariable> operation, Type[] parameterTypes, bool hasParamCount = true, bool[] executeInPlace = null)
         {
-            Function func = new Function(name, parameterTypes, executeInPlace);
-            func.OpFunc = operation;
+            Function func = new Function(name,  operation, parameterTypes, hasParamCount, executeInPlace);
             return func;
         }
     }

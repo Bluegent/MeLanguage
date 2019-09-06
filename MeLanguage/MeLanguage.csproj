@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definer\Functions\Mathematical\MaxFunction.cs" />
     <Compile Include="Definer\LConstants.cs" />
     <Compile Include="Definer\Utils.cs" />
     <Compile Include="Definer\Function.cs" />
@@ -64,14 +65,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Exceptions\MeException.cs" />
     <Compile Include="Types\Exceptions\MeInvalidCastException.cs" />
+    <Compile Include="Types\Var\MeArray.cs" />
     <Compile Include="Types\Var\MeBoolean.cs" />
+    <Compile Include="Types\Var\MeMarkers.cs" />
     <Compile Include="Types\Var\MeNumber.cs" />
     <Compile Include="Types\Var\MeStruct.cs" />
     <Compile Include="Types\Var\MeVariable.cs" />
     <Compile Include="Utility\MathUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Definer\Functions\Mathematical\" />
     <Folder Include="Definer\Operators\Object\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -49,19 +49,21 @@ namespace MeLanguage.Types.Var
 
         public override string ToString()
         {
-            StringBuilder b = new StringBuilder("$OBJ:");
+            StringBuilder b = new StringBuilder(MeMarkers.STRUCT_MARKER);
             b.Append((string)_value);
+            b.Append("{");
             if (Members.Values.Count != 0)
             {
-                b.Append("{");
+                
                 foreach (var pair in Members)
                 {
                     b.Append($"{pair.Key} = {pair.Value}, ");
                 }
 
                 b.Remove(b.Length - 2, 2);
-                b.Append("}");
+               
             }
+            b.Append("}");
             return b.ToString();
         }
     }
