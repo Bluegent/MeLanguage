@@ -15,6 +15,8 @@ namespace MeLanguage.Parser.Rearrange
 
         private void ShuntOperators(List<Token> postfix, Stack<Token> opStack, Operator op)
         {
+           
+
             Token nextTok = opStack.Count == 0 ? null : opStack.Peek();
             while (nextTok != null &&
                    nextTok.Type == TokenType.Operator &&
@@ -102,7 +104,8 @@ namespace MeLanguage.Parser.Rearrange
                             }
                             if (opStack.Count == 0)
                             {
-                                throw new MeException("Mismatched parenthesis after" + prevTok.Value + " .");
+                                if (prevTok != null)
+                                    throw new MeException("Mismatched parenthesis after" + prevTok.Value + " .");
                             }
                             opStack.Pop();
                             if (opStack.Count != 0 && opStack.Peek().Type == TokenType.Function)

@@ -1,14 +1,13 @@
 ﻿
 
 
+using MeLanguage.Definer;
 using MeLanguage.Definer.Creation;
+using MeLanguage.Parser.Tokenize;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace MeLanguage.Parser.Tokenize
+namespace MeLanguage.Parser
 {
-    using MeLanguage.Definer;
-    using MeLanguage.Parser.Tokenize;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     [TestClass]
     public class PostfixerTest
     {
@@ -99,3 +98,4 @@ namespace MeLanguage.Parser.Tokenize
         }
     }
 }
+

@@ -1,9 +1,10 @@
 ﻿using System;
 using MeLanguage.Definer;
 using MeLanguage.Definer.Creation;
+using MeLanguage.Parser.Tokenize;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace MeLanguage.Parser.Tokenize
+namespace MeLanguage.Parser
 {
     [TestClass]
     public class TokenizerTest

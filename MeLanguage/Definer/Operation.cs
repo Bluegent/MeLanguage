@@ -12,6 +12,11 @@
         public string Key { get; }
         public Validator Validator { private get; set; }
 
+        public int ParamCount
+        {
+            get { return _hasParamCount? AcceptedTypes.Length : -1; }
+        }
+
         private readonly int _hash;
         private Func<MeVariable[], Operation, MeVariable> _operation;
 

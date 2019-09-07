@@ -49,8 +49,9 @@
     <Compile Include="Definer\DefinerTest.cs" />
     <Compile Include="Definer\Functions\Mathematical\MathFunctionTest.cs" />
     <Compile Include="Definer\Operators\Mathetmatical\MathOperatorsTest.cs" />
-    <Compile Include="Parser\Tokenize\PostfixerTest.cs" />
-    <Compile Include="Parser\Tokenize\TokenizerTest.cs" />
+    <Compile Include="Parser\PostfixerTest.cs" />
+    <Compile Include="Parser\TokenizerTest.cs" />
+    <Compile Include="Parser\TreeBuilderTest.cs" />
     <Compile Include="TestUtils.cs" />
     <Compile Include="Types\Var\MeNumberTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
